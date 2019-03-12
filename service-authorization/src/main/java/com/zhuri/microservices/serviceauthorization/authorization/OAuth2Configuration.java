@@ -36,6 +36,7 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
                 final Map<String, Object> additionalInformation = new HashMap<>();
                 additionalInformation.put("id", user.getId());
                 additionalInformation.put("username", user.getUsername());
+                additionalInformation.put("role",user.authorities);
                 ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInformation);
                 OAuth2AccessToken enhancedToken = super.enhance(accessToken, authentication);
                 return enhancedToken;
